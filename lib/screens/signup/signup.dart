@@ -7,12 +7,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatefulWidget {
+class SignupScreen extends StatefulWidget {
   @override
-  _LoginScreenState createState() => _LoginScreenState();
+  _SignupScreenState createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(Object context) {
     return Scaffold(
@@ -23,12 +23,12 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(children: [
               ConvexHeaderWidget(),
               TextWidget(
-                text: 'Let’s Sign You In',
+                text: 'Getting Started',
                 style: Theme.of(context).textTheme.headline1,
               ),
               SizedBox(height: 8.0),
               TextWidget(
-                text: 'Welcome back, you’ve been missed!',
+                text: 'Create an account to continue!',
                 style: Theme.of(context).textTheme.headline5,
               ),
               Container(
@@ -36,6 +36,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: Form(
                   child: Column(
                     children: <Widget>[
+                      TextFormField(
+                        decoration: nameDecoration(),
+                      ),
                       TextFormField(
                         decoration: emailDecoration(),
                       ),
@@ -54,7 +57,7 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               children: [
                 TextFullButton(
-                  child: Text('Sign In'),
+                  child: Text('Sign Up'),
                   buttonColor: colorBlue,
                   textColor: Colors.white,
                   onPressed: null,
@@ -62,18 +65,18 @@ class _LoginScreenState extends State<LoginScreen> {
                 SizedBox(height: 16.0),
                 RichText(
                   text: TextSpan(
-                    text: 'Don' + 't have an account? ',
+                    text: 'Already have an account? ',
                     style: Theme.of(context).textTheme.headline5,
                     children: <TextSpan>[
                       TextSpan(
-                          text: 'Sign up!',
+                          text: 'Sign in!',
                           style: TextStyle(
                             color: colorBlue,
                             fontWeight: FontWeight.bold,
                           ),
                           recognizer: new TapGestureRecognizer()
                             ..onTap = () {
-                              Navigator.pushNamed(context, '/signup');
+                              Navigator.pushNamed(context, '/login');
                             }),
                     ],
                   ),
@@ -109,12 +112,31 @@ class _LoginScreenState extends State<LoginScreen> {
     // );
   }
 
-  emailDecoration() {
+  nameDecoration() {
     return InputDecoration(
       border: InputBorder.none,
       prefixIcon: Icon(Icons.person),
       suffix: Icon(Icons.done),
-      labelText: 'Username or Email',
+      labelText: 'Your Name',
+      enabledBorder: UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: colorGreyLight,
+        ),
+      ),
+      focusedBorder: UnderlineInputBorder(
+        borderSide: BorderSide(
+          color: colorGreyLight,
+        ),
+      ),
+    );
+  }
+
+  emailDecoration() {
+    return InputDecoration(
+      border: InputBorder.none,
+      prefixIcon: Icon(Icons.email),
+      suffix: Icon(Icons.done),
+      labelText: 'Your Email',
       enabledBorder: UnderlineInputBorder(
         borderSide: BorderSide(
           color: colorGreyLight,
@@ -132,13 +154,6 @@ class _LoginScreenState extends State<LoginScreen> {
     return InputDecoration(
       border: InputBorder.none,
       prefixIcon: Icon(Icons.lock),
-      suffixIcon: FlatButton(
-        onPressed: () {},
-        child: Text(
-          "Forgot?",
-          style: TextStyle(color: colorBlue),
-        ),
-      ),
       labelText: 'Password',
       enabledBorder: UnderlineInputBorder(
         borderSide: BorderSide(

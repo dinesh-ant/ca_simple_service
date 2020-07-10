@@ -1,19 +1,23 @@
 import 'package:ca_simple_service/constants/constant.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
-class ClipHeaderWidget extends StatelessWidget {
+class ConcaveHeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: ClipPath(
+    return Column(children: [
+      Container(
+        height: 30,
+        color: colorYellowLight,
+      ),
+      ClipPath(
         child: Container(
           width: MediaQuery.of(context).size.width,
-          height: 150,
-          color: colorBlue,
+          height: 15,
+          color: colorYellowLight,
         ),
         clipper: CustomClipPath(),
       ),
-    );
+    ]);
   }
 }
 
@@ -21,15 +25,10 @@ class CustomClipPath extends CustomClipper<Path> {
   @override
   Path getClip(Size size) {
     Path path = Path();
-    path.lineTo(0, size.height - 100);
-    path.quadraticBezierTo(
-      size.width / 2,
-      size.height,
-      size.width,
-      size.height - 100,
-    );
+    path.lineTo(0, size.height);
+    path.arcToPoint(Offset(size.width, size.height),
+        radius: Radius.elliptical(30, 4));
     path.lineTo(size.width, 0);
-    path.close();
     return path;
   }
 

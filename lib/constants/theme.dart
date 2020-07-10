@@ -18,12 +18,28 @@ ThemeData buildAppTheme() {
         fontWeight: FontWeight.bold,
         color: colorTextDark,
         letterSpacing: 0.4,
+        height: 2,
       ),
-      headline6: TextStyle(
+      headline4: TextStyle(
+        fontSize: 16.0,
+        fontWeight: FontWeight.bold,
+        color: colorTextDark,
+        letterSpacing: 0.2,
+        height: 2,
+      ),
+      headline5: TextStyle(
         fontSize: 14.0,
         fontStyle: FontStyle.normal,
         color: colorTextLight,
         letterSpacing: 0.4,
+        height: 1.5,
+      ),
+      headline6: TextStyle(
+        fontSize: 12.0,
+        fontStyle: FontStyle.normal,
+        color: colorTextLight,
+        letterSpacing: 0.4,
+        height: 1.5,
       ),
     ),
   );

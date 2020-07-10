@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       providers: getProviders,
       child: MaterialApp(
         theme: buildAppTheme(),
-        initialRoute: '/',
+        initialRoute: '/company_documents',
         routes: appRoutes,
       ),
     );

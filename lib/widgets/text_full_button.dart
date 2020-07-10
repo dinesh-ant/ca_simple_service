@@ -1,12 +1,15 @@
-import 'package:ca_simple_service/constants/constant.dart';
 import 'package:flutter/material.dart';
 
 class TextFullButton extends StatefulWidget {
   final Widget child;
+  final Color buttonColor;
+  final Color textColor;
   final GestureTapCallback onPressed;
 
   TextFullButton({
     @required this.child,
+    @required this.buttonColor,
+    @required this.textColor,
     @required this.onPressed,
   });
   @override
@@ -24,8 +27,8 @@ class _TextFullButtonState extends State<TextFullButton> {
         ),
         height: 44.0,
         child: RaisedButton(
-          color: colorBlue,
-          textColor: Colors.white,
+          color: this.widget.buttonColor,
+          textColor: this.widget.textColor,
           child: this.widget.child,
           onPressed: () {
             this.widget.onPressed();
